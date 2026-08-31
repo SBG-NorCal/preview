@@ -481,7 +481,7 @@ breakpoint and attaches full-page screenshots to the report.
 │       ├── programs/        # Program hero images (16:9)
 │       ├── hero/            # Homepage / page heroes
 │       ├── gallery/         # General gym + MATS gallery
-│       └── logo-sbg.jpg
+│       └── logo-sbg.png
 │
 ├── .github/workflows/
 │   └── deploy.yml           # GitHub Pages deployment
@@ -614,15 +614,36 @@ file you need to edit to re-skin the entire site:
 
 | Token | Value | Used for |
 |-------|-------|----------|
-| `$ink` | `#0b0b0e` | Page background |
-| `$bone` | `#f5f1ea` | Body text |
-| `$red` | `#d22020` | **SBG accent** — CTAs, links, gym-context highlights |
-| `$gold` | `#e4b73a` | **MATS accent** — used only in nonprofit-context elements |
+| `$cream` | `#fffcef` | Page background; text inside a navy band |
+| `$navy` | `#1f3d58` | Body text; the full-bleed navy bands |
+| `$navy-deep` | `#162c40` | Footer, hero base, `.section--dark` |
+| `$gold` | `#fcb51b` | **Accent** — the logo's ring. Buttons, promo bar, active states |
+| `$gold-deep` | `#7a4e00` | Gold as *text* on cream (see the rule below) |
+| `$mats` | `#2b6285` | **MATS accent** on cream — nonprofit-context elements |
+| `$mats-light` | `#7fb4d8` | Same, inside a navy band |
 | `$font-display` | Anton | Headings (uppercase display) |
 | `$font-body` | Inter | Body copy, UI |
 | `$font-mono` | JetBrains Mono | Schedule times, code |
 
 Fonts are loaded from Google Fonts in `_layouts/default.html`.
+
+### The one rule: gold cannot carry weight on cream
+
+`$gold` on `$cream` is **1.7:1** — invisible as text and well under the 3:1
+floor for a border or rule. So on a light section gold appears only as a
+*fill* (a button, a badge, the promo bar) with a navy label on top. Text
+that wants to read as gold uses `$gold-deep` (7.0:1); lines and rules on
+cream are navy. Inside a navy band gold is 6.3:1 and works everywhere.
+
+### Light page, navy bands
+
+The site is light-ground. The hero, sticky header, mobile drawer, CTA
+banner, footer, and `.section--dark` are full-bleed navy, and each one
+`@include`s the `on-dark` mixin from `_sass/_base.scss`. That mixin
+re-points every inherited colour inside the band — headings, body copy,
+links, eyebrows, and the outline button variants. **Put `@include on-dark`
+on the band itself, never on its children**, and a new dark section will
+inherit the whole set for free.
 
 ---
 

@@ -115,11 +115,11 @@ permalink: /mats/
 
     <div style="display:grid; grid-template-columns:1fr; gap:1rem;">
       {% for p in site.data.partners.partners %}
-      <div style="padding:1.5rem; background:#1f1f25; border:1px solid #2a2a32; border-left: 3px solid #e4b73a; border-radius:8px;">
+      <div style="padding:1.5rem; background:#f1ebd9; border:1px solid #e4dcc4; border-left: 3px solid #2b6285; border-radius:8px;">
         <h3 style="margin:0 0 0.5rem; font-size:1.15rem;">
-          {% if p.url != "" %}<a href="{{ p.url }}" rel="noopener" target="_blank" style="color:#f5f1ea;">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}
+          {% if p.url != "" %}<a href="{{ p.url }}" rel="noopener" target="_blank" style="color:#1f3d58;">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}
         </h3>
-        <p style="margin:0; color:#c9c2b6; font-size:0.95rem;">{{ p.description }}</p>
+        <p style="margin:0; color:#3f5f79; font-size:0.95rem;">{{ p.description }}</p>
       </div>
       {% endfor %}
     </div>
@@ -159,17 +159,17 @@ permalink: /mats/
       </p>
 
       <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:1rem; max-width: 720px; margin: 2rem auto;">
-        <div style="padding:1.25rem; background:#1f1f25; border:1px solid #2a2a32; border-radius:8px;">
-          <div style="font-family: Anton, sans-serif; font-size:2rem; color:#e4b73a; line-height:1;">$25</div>
-          <div style="color:#c9c2b6; font-size:0.85rem; margin-top:0.5rem;">One week of after-school training for a youth athlete</div>
+        <div style="padding:1.25rem; background:#f1ebd9; border:1px solid #e4dcc4; border-radius:8px;">
+          <div style="font-family: Anton, sans-serif; font-size:2rem; color:#2b6285; line-height:1;">$25</div>
+          <div style="color:#3f5f79; font-size:0.85rem; margin-top:0.5rem;">One week of after-school training for a youth athlete</div>
         </div>
-        <div style="padding:1.25rem; background:#1f1f25; border:1px solid #2a2a32; border-radius:8px;">
-          <div style="font-family: Anton, sans-serif; font-size:2rem; color:#e4b73a; line-height:1;">$50<span style="font-size:1rem;">/mo</span></div>
-          <div style="color:#c9c2b6; font-size:0.85rem; margin-top:0.5rem;">One youth athlete's entire year of training</div>
+        <div style="padding:1.25rem; background:#f1ebd9; border:1px solid #e4dcc4; border-radius:8px;">
+          <div style="font-family: Anton, sans-serif; font-size:2rem; color:#2b6285; line-height:1;">$50<span style="font-size:1rem;">/mo</span></div>
+          <div style="color:#3f5f79; font-size:0.85rem; margin-top:0.5rem;">One youth athlete's entire year of training</div>
         </div>
-        <div style="padding:1.25rem; background:#1f1f25; border:1px solid #2a2a32; border-radius:8px;">
-          <div style="font-family: Anton, sans-serif; font-size:2rem; color:#e4b73a; line-height:1;">$500</div>
-          <div style="color:#c9c2b6; font-size:0.85rem; margin-top:0.5rem;">A full summer camp scholarship</div>
+        <div style="padding:1.25rem; background:#f1ebd9; border:1px solid #e4dcc4; border-radius:8px;">
+          <div style="font-family: Anton, sans-serif; font-size:2rem; color:#2b6285; line-height:1;">$500</div>
+          <div style="color:#3f5f79; font-size:0.85rem; margin-top:0.5rem;">A full summer camp scholarship</div>
         </div>
       </div>
 
@@ -178,15 +178,15 @@ permalink: /mats/
         <a href="mailto:{{ site.data.site.contact.mats_email }}?subject=MATS%20Donation" class="btn btn--secondary btn--lg">Other ways to give</a>
       </div>
 
-      <p style="font-size:0.95rem; color:#c9c2b6; margin-top:1rem;">
-        Venmo us at <strong style="color:#e4b73a;">{{ site.data.site.donate.venmo_handle }}</strong> &mdash;
+      <p style="font-size:0.95rem; color:#3f5f79; margin-top:1rem;">
+        Venmo us at <strong style="color:#2b6285;">{{ site.data.site.donate.venmo_handle }}</strong> &mdash;
         please add a note so we can send you a receipt.
       </p>
 
-      <p style="font-size:0.85rem; color:#8b8579; margin-top:1.5rem;">
+      <p style="font-size:0.85rem; color:#55708a; margin-top:1.5rem;">
         MATS — Martial Arts Training and Scholarship — is a registered US 501(c)(3) nonprofit
         (founded 2013, recognized {{ site.data.site.brand.foundation_irs_recognition }}) &middot;
-        <strong style="color:#c9c2b6;">EIN {{ site.data.site.brand.mats_ein }}</strong>.<br/>
+        <strong style="color:#3f5f79;">EIN {{ site.data.site.brand.mats_ein }}</strong>.<br/>
         Donations are tax-deductible to the extent allowed by law.
       </p>
     </div>

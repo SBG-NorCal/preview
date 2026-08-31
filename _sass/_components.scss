@@ -25,14 +25,16 @@
 
   &:hover { transform: translateY(-1px); }
   &:active { transform: translateY(0); }
-  &:focus-visible { outline: 2px solid $accent-2; outline-offset: 3px; }
+  &:focus-visible { outline: 2px solid $fg; outline-offset: 3px; }
 
+  // Gold fill, navy label — 6.3:1. Gold is the action colour, and this is
+  // the one place it carries at full strength on a cream page.
   &--primary {
     background: $accent;
-    color: #fff;
+    color: $navy;
     box-shadow: $shadow-sm;
 
-    &:hover { background: $accent-2; color: #fff; box-shadow: $glow-red; }
+    &:hover { background: $accent-2; color: $navy; box-shadow: $glow-accent; }
   }
 
   &--secondary {
@@ -40,7 +42,7 @@
     color: $fg;
     border-color: $fg;
 
-    &:hover { background: $fg; color: $ink; }
+    &:hover { background: $fg; color: $cream; }
   }
 
   &--ghost {
@@ -53,9 +55,9 @@
 
   &--mats {
     background: $mats;
-    color: $ink;
+    color: $cream;
 
-    &:hover { background: lighten($mats, 5%); color: $ink; }
+    &:hover { background: lighten($mats, 5%); color: $cream; }
   }
 
   &--lg {
@@ -104,7 +106,7 @@
   top: 0; left: 0; right: 0;
   z-index: $z-nav + 1;
   background: $accent;
-  color: #fff;
+  color: $navy;
   text-decoration: none;
   font-size: 0.875rem;
   letter-spacing: 0.02em;
@@ -112,7 +114,7 @@
   text-align: center;
   transition: background $dur $ease-out;
 
-  &:hover { background: $accent-2; color: #fff; }
+  &:hover { background: $accent-2; color: $navy; }
 
   &__inner {
     display: inline-flex;
@@ -128,8 +130,8 @@
     flex-shrink: 0;
     width: 8px; height: 8px;
     border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 0 0 0 rgba(255,255,255,0.6);
+    background: $navy;
+    box-shadow: 0 0 0 0 rgba(31,61,88,0.6);
     animation: promo-pulse 2s infinite ease-out;
   }
 
@@ -143,7 +145,7 @@
     letter-spacing: 0.12em;
     font-size: $fs-xs;
     padding-left: $sp-3;
-    border-left: 1px solid rgba(255,255,255,0.4);
+    border-left: 1px solid rgba(31,61,88,0.35);
     margin-left: $sp-2;
   }
 
@@ -170,9 +172,9 @@
 }
 
 @keyframes promo-pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(255,255,255,0.5); }
-  70%  { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
-  100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+  0%   { box-shadow: 0 0 0 0 rgba(31,61,88,0.5); }
+  70%  { box-shadow: 0 0 0 10px rgba(31,61,88,0); }
+  100% { box-shadow: 0 0 0 0 rgba(31,61,88,0); }
 }
 
 // ---- Site header --------------------------------------------------------
@@ -181,7 +183,8 @@
   top: 32px; left: 0; right: 0;  // Below promo bar (mobile compact)
   z-index: $z-nav;
   padding: $sp-3 0;
-  background: rgba(11, 11, 14, 0.85);
+  background: rgba($navy, 0.88);
+  @include on-dark;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid transparent;
@@ -196,8 +199,8 @@
   body.no-promo & { top: 0; }
 
   &.is-scrolled {
-    background: rgba(11, 11, 14, 0.95);
-    border-bottom-color: $border;
+    background: rgba($navy, 0.97);
+    border-bottom-color: $border-on-dark;
   }
 
   &__inner {
@@ -211,18 +214,18 @@
     display: flex;
     align-items: center;
     gap: $sp-3;
-    color: $fg;
+    color: $fg-on-dark;
     font-family: $font-display;
     font-size: $fs-lg;
     text-transform: uppercase;
     letter-spacing: 0.04em;
 
-    &:hover { color: $fg; }
+    &:hover { color: $fg-on-dark; }
   }
 
   &__logo {
     width: 40px; height: 40px;
-    border-radius: $radius-sm;
+    border-radius: $radius-pill;
     object-fit: cover;
   }
 
@@ -233,7 +236,7 @@
     font-size: $fs-xs;
     font-weight: $weight-medium;
     letter-spacing: 0.12em;
-    color: $fg-dim;
+    color: $fg-on-dark-dim;
     text-transform: uppercase;
     line-height: 1.1;
     margin-top: 2px;
@@ -247,13 +250,13 @@
   &__burger {
     @include lg { display: none; }
     background: transparent;
-    border: 1px solid $border;
+    border: 1px solid $border-on-dark;
     border-radius: $radius-sm;
     width: 44px; height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $fg;
+    color: $fg-on-dark;
     cursor: pointer;
 
     svg { width: 24px; height: 24px; }
@@ -270,7 +273,7 @@
   }
 
   a {
-    color: $fg-mute;
+    color: $fg-on-dark-mute;
     font-family: $font-body;
     font-size: $fs-sm;
     font-weight: $weight-medium;
@@ -291,7 +294,7 @@
     }
 
     &:hover, &.is-active {
-      color: $fg;
+      color: $fg-on-dark;
       &::after { transform: scaleX(1); }
     }
   }
@@ -302,7 +305,8 @@
   display: none;
   position: fixed;
   inset: 92px 0 0 0;  // Below promo (32) + header (~60) on mobile
-  background: rgba(11,11,14,0.98);
+  background: rgba($navy, 0.98);
+  @include on-dark;
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   z-index: $z-nav - 1;
@@ -326,8 +330,8 @@
     font-size: $fs-2xl;
     text-transform: uppercase;
     padding: $sp-3 0;
-    color: $fg;
-    border-bottom: 1px solid $border;
+    color: $fg-on-dark;
+    border-bottom: 1px solid $border-on-dark;
 
     &:hover { color: $accent; }
   }
@@ -335,11 +339,12 @@
 
 // ---- Site footer --------------------------------------------------------
 .site-footer {
-  background: #000;
-  border-top: 1px solid $border;
+  background: $navy-deep;
+  border-top: 1px solid $border-on-dark;
   padding: $sp-8 0 $sp-6;
-  color: $fg-dim;
+  color: $fg-on-dark-dim;
   font-size: $fs-sm;
+  @include on-dark;
 
   &__grid {
     display: grid;
@@ -352,7 +357,7 @@
   h4 {
     font-size: $fs-xs;
     letter-spacing: 0.18em;
-    color: $fg;
+    color: $fg-on-dark;
     margin-bottom: $sp-4;
   }
 
@@ -364,7 +369,7 @@
     li { margin-bottom: $sp-2; }
 
     a {
-      color: $fg-mute;
+      color: $fg-on-dark-mute;
       font-size: $fs-sm;
 
       &:hover { color: $accent; }
@@ -372,7 +377,7 @@
   }
 
   &__bottom {
-    border-top: 1px solid $border;
+    border-top: 1px solid $border-on-dark;
     padding-top: $sp-5;
     display: flex;
     flex-direction: column;
@@ -386,7 +391,7 @@
 
   &__legal {
     font-size: $fs-xs;
-    color: $fg-dim;
+    color: $fg-on-dark-dim;
   }
 
   &__social {
@@ -399,8 +404,8 @@
       align-items: center;
       justify-content: center;
       border-radius: $radius-pill;
-      border: 1px solid $border;
-      color: $fg-mute;
+      border: 1px solid $border-on-dark;
+      color: $fg-on-dark-mute;
       transition: all $dur $ease-out;
 
       svg { width: 16px; height: 16px; }
@@ -420,9 +425,10 @@
   display: flex;
   align-items: flex-end;
   padding: $sp-9 0 $sp-7;
-  color: $fg;
+  color: $fg-on-dark;
   overflow: hidden;
-  background: $ink;
+  background: $navy-deep;
+  @include on-dark;
 
   &__media {
     position: absolute;
@@ -434,9 +440,13 @@
       content: '';
       position: absolute;
       inset: 0;
+      // Navy is a much lighter scrim than the ink-black this replaced, so the
+      // stops are pulled up to hold the same legibility over a bright photo —
+      // the middle of the vertical ramp especially, which the eyebrow sits on
+      // at phone heights.
       background:
-        linear-gradient(180deg, rgba(11,11,14,0.6) 0%, rgba(11,11,14,0.0) 30%, rgba(11,11,14,0.95) 100%),
-        linear-gradient(90deg, rgba(11,11,14,0.65) 0%, rgba(11,11,14,0.15) 100%);
+        linear-gradient(180deg, rgba(22,44,64,0.65) 0%, rgba(22,44,64,0.25) 28%, rgba(22,44,64,0.97) 100%),
+        linear-gradient(90deg, rgba(22,44,64,0.78) 0%, rgba(22,44,64,0.20) 100%);
     }
 
     img {
@@ -463,7 +473,7 @@
     font-weight: $weight-bold;
     text-transform: uppercase;
     letter-spacing: 0.22em;
-    color: $bone;
+    color: $fg-on-dark;
     padding: $sp-2 $sp-4;
     background: rgba($accent, 0.15);
     border: 1px solid rgba($accent, 0.5);
@@ -484,7 +494,7 @@
 
   &__lead {
     font-size: clamp($fs-md, 2vw, $fs-xl);
-    color: $bone;
+    color: $fg-on-dark;
     max-width: 640px;
     margin: 0 0 $sp-6;
     line-height: 1.5;
@@ -519,8 +529,8 @@
   &--compact + .section { padding-top: $sp-5; }
 
   &--mats {
-    .hero__eyebrow { background: rgba($mats, 0.15); border-color: rgba($mats, 0.5); }
-    .hero__title .accent { color: $mats; }
+    .hero__eyebrow { background: rgba($mats-light, 0.15); border-color: rgba($mats-light, 0.6); }
+    .hero__title .accent { color: $mats-light; }
   }
 }
 
@@ -541,7 +551,7 @@
   overflow: hidden;
 
   &__item {
-    background: $ink-2;
+    background: $bg-elev;
     padding: $sp-5 $sp-4;
     text-align: center;
   }
@@ -549,7 +559,7 @@
   &__num {
     font-family: $font-display;
     font-size: $fs-3xl;
-    color: $accent;
+    color: $gold-deep;
     line-height: 1;
     margin-bottom: $sp-2;
   }
@@ -575,7 +585,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background: $ink-2;
+  background: $bg-elev;
   border: 1px solid $border;
   border-radius: $radius-lg;
   overflow: hidden;
@@ -585,17 +595,17 @@
 
   &:hover {
     transform: translateY(-4px);
-    border-color: $accent;
+    border-color: $fg;
     box-shadow: $shadow-lg;
 
-    .program-card__title { color: $accent; }
+    .program-card__title { color: $gold-deep; }
     img { transform: scale(1.05); }
   }
 
   &__media {
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background: $ink-3;
+    background: $bg-card;
 
     img {
       width: 100%; height: 100%;
@@ -616,7 +626,7 @@
     font-weight: $weight-bold;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: $accent;
+    color: $gold-deep;
     margin-bottom: $sp-2;
   }
 
@@ -664,24 +674,24 @@
   text-decoration: none;
   color: inherit;
   display: block;
-  background: $ink-2;
+  background: $bg-elev;
   border: 1px solid $border;
   border-radius: $radius;
   overflow: hidden;
   transition: all $dur $ease-out;
 
   &:hover {
-    border-color: $accent;
+    border-color: $fg;
     transform: translateY(-2px);
 
     img { transform: scale(1.04); }
-    .coach-card__name { color: $accent; }
+    .coach-card__name { color: $gold-deep; }
   }
 
   &__media {
     aspect-ratio: 4 / 5;
     overflow: hidden;
-    background: $ink-3;
+    background: $bg-card;
     position: relative;
 
     img {
@@ -715,10 +725,10 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
     background: rgba(0,0,0,0.7);
-    color: $fg;
+    color: $cream;
     padding: $sp-1 $sp-2;
     border-radius: $radius-sm;
-    border: 1px solid rgba($fg,0.2);
+    border: 1px solid rgba($cream,0.25);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
@@ -757,7 +767,7 @@
 .schedule {
   border: 1px solid $border;
   border-radius: $radius-lg;
-  background: $ink-2;
+  background: $bg-elev;
   overflow: hidden;
 
   &__filters {
@@ -766,7 +776,7 @@
     gap: $sp-2;
     padding: $sp-4 $sp-5;
     border-bottom: 1px solid $border;
-    background: $ink-3;
+    background: $bg-card;
   }
 
   &__filter {
@@ -786,7 +796,7 @@
 
     &.is-active {
       background: $accent;
-      color: #fff;
+      color: $navy;
       border-color: $accent;
     }
   }
@@ -818,7 +828,7 @@
     text-transform: uppercase;
     color: $fg;
     border-bottom: 1px solid $border;
-    background: $ink-3;
+    background: $bg-card;
     letter-spacing: 0.04em;
     text-align: center;
 
@@ -854,27 +864,27 @@
 
   &__slot {
     padding: $sp-3;
-    background: $ink-3;
+    background: $bg-card;
     border: 1px solid transparent;
-    border-left: 3px solid $accent;
+    border-left: 3px solid $cat-bjj;
     border-radius: $radius-sm;
     text-decoration: none;
     color: inherit;
     transition: all $dur-fast $ease-out;
 
     &:hover {
-      border-color: $accent;
-      background: lighten($ink-3, 4%);
+      border-color: $fg;
+      background: lighten($bg-card, 4%);
       transform: translateX(2px);
     }
 
-    &--bjj         { border-left-color: $accent; }
-    &--kickboxing  { border-left-color: #2196f3; }
-    &--boxing-bootcamp { border-left-color: #ff9800; }
-    &--mma         { border-left-color: #9c27b0; }
-    &--fitness-101 { border-left-color: #4caf50; }
-    &--youth-martial-arts { border-left-color: $mats; }
-    &--open-mat    { border-left-color: $fg-mute; }
+    &--bjj         { border-left-color: $cat-bjj; }
+    &--kickboxing  { border-left-color: $cat-kickboxing; }
+    &--boxing-bootcamp { border-left-color: $cat-boxing; }
+    &--mma         { border-left-color: $cat-mma; }
+    &--fitness-101 { border-left-color: $cat-fitness; }
+    &--youth-martial-arts { border-left-color: $cat-youth; }
+    &--open-mat    { border-left-color: $cat-open-mat; }
   }
 
   &__slot-time {
@@ -936,8 +946,9 @@
 .cta-banner {
   position: relative;
   padding: $sp-9 0;
-  background: linear-gradient(135deg, $accent 0%, darken($accent, 18%) 100%);
-  color: #fff;
+  background: linear-gradient(135deg, $navy 0%, $navy-deep 100%);
+  color: $fg-on-dark;
+  @include on-dark;
   overflow: hidden;
   text-align: center;
 
@@ -958,20 +969,14 @@
   }
 
   h2 {
-    color: #fff;
+    color: $fg-on-dark;
     margin-bottom: $sp-4;
   }
 
   p {
-    color: rgba(255,255,255,0.9);
+    color: $fg-on-dark-mute;
     font-size: $fs-md;
     margin-bottom: $sp-5;
-  }
-
-  .btn--secondary {
-    color: #fff;
-    border-color: #fff;
-    &:hover { background: #fff; color: $accent; }
   }
 }
 
@@ -995,7 +1000,7 @@
 
 .mats-pillar {
   padding: $sp-6;
-  background: $ink-2;
+  background: $bg-elev;
   border: 1px solid $border;
   border-radius: $radius-lg;
   border-top: 4px solid $mats;
@@ -1052,7 +1057,7 @@
 
 .testimonial {
   padding: $sp-6;
-  background: $ink-2;
+  background: $bg-elev;
   border: 1px solid $border;
   border-radius: $radius-lg;
   position: relative;
@@ -1063,7 +1068,7 @@
     top: 12px; left: 16px;
     font-family: $font-display;
     font-size: 6rem;
-    color: rgba($accent, 0.25);
+    color: rgba($navy, 0.12);
     line-height: 1;
   }
 
@@ -1112,7 +1117,7 @@
   @include md { grid-template-columns: 200px 1fr auto; }
   gap: $sp-5;
   padding: $sp-5;
-  background: $ink-2;
+  background: $bg-elev;
   border: 1px solid $border;
   border-radius: $radius-lg;
   text-decoration: none;
@@ -1121,9 +1126,9 @@
   align-items: center;
 
   &:hover {
-    border-color: $accent;
+    border-color: $fg;
     transform: translateY(-2px);
-    .event-row__title { color: $accent; }
+    .event-row__title { color: $gold-deep; }
   }
 
   &--past { opacity: 0.65; }
@@ -1135,7 +1140,7 @@
     .day {
       display: block;
       font-size: $fs-3xl;
-      color: $accent;
+      color: $gold-deep;
       line-height: 1;
     }
     .month-year {
@@ -1180,15 +1185,15 @@
   border: 1px solid currentColor;
   line-height: 1.2;
 
-  &--partiful   { color: #ff6b9d; }   // Partiful-ish pink
-  &--luma       { color: #7b9fff; }   // Luma blue
-  &--eventbrite { color: #f97316; }   // Eventbrite orange
+  &--partiful   { color: #c2255c; }   // Partiful-ish pink
+  &--luma       { color: #3b5bdb; }   // Luma blue
+  &--eventbrite { color: #c2410c; }   // Eventbrite orange
 }
 
 // ---- Members-only calendar page ----------------------------------------
 .members-explainer {
   padding: $sp-5 $sp-6;
-  background: $ink-2;
+  background: $bg-elev;
   border: 1px solid $border;
   border-left: 4px solid $mats;
   border-radius: $radius;
@@ -1210,7 +1215,7 @@
 
 .members-fallback {
   padding: $sp-6;
-  background: $ink-2;
+  background: $bg-elev;
   border: 1px solid $border;
   border-radius: $radius;
   color: $fg-mute;
@@ -1244,7 +1249,7 @@
     font-size: $fs-sm;
     color: $fg-dim;
 
-    a { color: $accent; }
+    a { color: $gold-deep; }
   }
 }
 
@@ -1254,7 +1259,7 @@
   gap: $sp-5;
   align-items: center;
   padding: $sp-6;
-  background: linear-gradient(135deg, $ink-2 0%, $ink-3 100%);
+  background: linear-gradient(135deg, $bg-elev 0%, $bg-card 100%);
   border: 1px solid $border;
   border-left: 4px solid $mats;
   border-radius: $radius;
@@ -1266,7 +1271,7 @@
 
 // ---- Pricing / get-started ---------------------------------------------
 .trial-card {
-  background: linear-gradient(165deg, $ink-2 0%, $ink-3 100%);
+  background: linear-gradient(165deg, $bg-elev 0%, $bg-card 100%);
   border: 1px solid $border;
   border-radius: $radius-xl;
   padding: $sp-7;
@@ -1287,7 +1292,7 @@
   .price {
     font-family: $font-display;
     font-size: clamp($fs-3xl, 6vw, $fs-5xl);
-    color: $accent;
+    color: $gold-deep;
     line-height: 1;
     margin: $sp-4 0 $sp-3;
   }
@@ -1313,7 +1318,7 @@
 
       &::before {
         content: '→';
-        color: $accent;
+        color: $gold-deep;
         font-weight: $weight-bold;
         flex-shrink: 0;
       }
@@ -1342,7 +1347,7 @@
   &__select {
     width: 100%;
     padding: $sp-3 $sp-4;
-    background: $ink-3;
+    background: $bg-card;
     color: $fg;
     border: 1px solid $border;
     border-radius: $radius-sm;
@@ -1352,8 +1357,9 @@
 
     &:focus {
       outline: none;
-      border-color: $accent;
-      background: lighten($ink-3, 2%);
+      border-color: $fg;
+      box-shadow: 0 0 0 3px rgba($accent, 0.45);
+      background: lighten($bg-card, 3%);
     }
   }
 
@@ -1380,7 +1386,6 @@
     width: 100%;
     height: 100%;
     border: 0;
-    filter: invert(0.9) hue-rotate(180deg);
   }
 }
 
@@ -1415,10 +1420,10 @@
 
   &__meta-item {
     padding: $sp-3 $sp-4;
-    background: $ink-2;
+    background: $bg-elev;
     border: 1px solid $border;
     border-radius: $radius-sm;
-    border-left: 3px solid $accent;
+    border-left: 3px solid $fg;
 
     dt {
       font-size: $fs-xs;
@@ -1463,7 +1468,7 @@
 
   &__item {
     padding: $sp-2 $sp-3;
-    background: $ink-2;
+    background: $bg-elev;
     border: 1px solid $border;
     border-radius: $radius-pill;
     font-size: $fs-xs;

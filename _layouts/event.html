@@ -38,9 +38,9 @@ layout: default
 </header>
 
 <div class="container container--narrow section">
-  <dl style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1.25rem; margin-bottom:2.5rem; padding:1.5rem; background:#16161b; border:1px solid #2a2a32; border-radius:16px;">
-    <div><dt class="eyebrow eyebrow--mute">When</dt><dd style="margin:0;">{{ page.date | date: "%a, %b %-d, %Y" }}<br/><span style="color:#c9c2b6;">{{ page.time }}</span></dd></div>
-    <div><dt class="eyebrow eyebrow--mute">Where</dt><dd style="margin:0;">{{ page.location }}<br/><span style="color:#c9c2b6; font-size:0.9rem;">{{ page.address }}</span></dd></div>
+  <dl style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1.25rem; margin-bottom:2.5rem; padding:1.5rem; background:#faf5e6; border:1px solid #e4dcc4; border-radius:16px;">
+    <div><dt class="eyebrow eyebrow--mute">When</dt><dd style="margin:0;">{{ page.date | date: "%a, %b %-d, %Y" }}<br/><span style="color:#3f5f79;">{{ page.time }}</span></dd></div>
+    <div><dt class="eyebrow eyebrow--mute">Where</dt><dd style="margin:0;">{{ page.location }}<br/><span style="color:#3f5f79; font-size:0.9rem;">{{ page.address }}</span></dd></div>
     <div><dt class="eyebrow eyebrow--mute">Cost</dt><dd style="margin:0; font-weight:600;">{{ page.cost }}</dd></div>
     <div><dt class="eyebrow eyebrow--mute">Audience</dt><dd style="margin:0; font-weight:600;">{{ page.audience }}</dd></div>
     {% if page.host %}<div><dt class="eyebrow eyebrow--mute">Hosted by</dt><dd style="margin:0; font-weight:600;">{{ page.host }}</dd></div>{% endif %}

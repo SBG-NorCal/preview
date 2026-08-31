@@ -4,32 +4,62 @@
 // =========================================================================
 
 // ---- Color palette ------------------------------------------------------
-// Combat aesthetic: ink black, warm off-white, signature red, MATS gold accent.
-$ink:        #0b0b0e;        // page background, ultra-dark
-$ink-2:      #16161b;        // raised surfaces
-$ink-3:      #1f1f25;        // cards
-$ink-line:   #2a2a32;        // borders
-$bone:       #f5f1ea;        // primary text / off-white
-$bone-mute:  #c9c2b6;        // secondary text
-$bone-dim:   #8b8579;        // tertiary text / metadata
-$red:        #d22020;        // SBG signature red
-$red-hot:    #ff3a3a;        // hover/accent variant
-$gold:       #e4b73a;        // MATS accent — used for foundation context only
-$gold-mute:  #8c6e1f;
-$success:    #4caf6f;
-$warning:    #f4a623;
+// Brand: deep navy + warm cream, taken from the SBG NorCal mark, with the
+// mark's gold ring as the accent. The site is LIGHT-GROUND: cream pages,
+// navy ink, and navy used again as full-bleed bands (hero, header, CTA,
+// footer) so both brand colors carry real weight.
+//
+// The one rule that governs everything below: GOLD CANNOT CARRY WEIGHT ON
+// CREAM. $gold on $cream is 1.7:1 — invisible as text and below the 3:1
+// floor for a rule or border. So gold appears on light ground only as a
+// FILL (a button, a badge) with a navy label on top, and as text or a line
+// only inside the navy bands. Where a light section needs gold-flavoured
+// text, use $gold-deep (7.0:1). Lines and rules on cream are navy.
+$navy:       #1f3d58;        // brand blue — ink, and the dark bands
+$navy-deep:  #162c40;        // footer, hero base, deepest band
+$navy-2:     #2b4c68;        // raised surface inside a navy band
+$navy-3:     #3a5c78;        // hairlines inside a navy band
+$cream:      #fffcef;        // brand beige — page ground
+$cream-2:    #faf5e6;        // raised surface / alternating section
+$cream-3:    #f1ebd9;        // cards, wells, inputs
+$cream-line: #e4dcc4;        // borders on light ground
+$gold:       #fcb51b;        // accent — the logo's ring
+$gold-hover: #e5a100;
+$gold-deep:  #7a4e00;        // gold as TEXT on cream (7.0:1)
+$mats:       #2b6285;        // MATS — a steel blue, in-family (text on cream)
+$mats-light: #7fb4d8;        // MATS inside a navy band (5.1:1 both directions)
+$success:    #2f7d32;
+$warning:    #b45309;
 
-// Semantic aliases
-$bg:         $ink;
-$bg-elev:    $ink-2;
-$bg-card:    $ink-3;
-$fg:         $bone;
-$fg-mute:    $bone-mute;
-$fg-dim:     $bone-dim;
-$border:     $ink-line;
-$accent:     $red;
-$accent-2:   $red-hot;
-$mats:       $gold;
+// Semantic aliases — light ground (the default)
+$bg:         $cream;
+$bg-elev:    $cream-2;
+$bg-card:    $cream-3;
+$fg:         $navy;
+$fg-mute:    #3f5f79;        // 6.5:1 on cream
+$fg-dim:     #55708a;        // 4.6:1 on cream
+$border:     $cream-line;
+$accent:     $gold;
+$accent-2:   $gold-hover;
+
+// Semantic aliases — inside a navy band (hero, header, CTA, footer)
+$bg-dark:         $navy;
+$bg-dark-elev:    $navy-2;
+$fg-on-dark:      $cream;
+$fg-on-dark-mute: #b9c9d6;   // 6.6:1 on navy
+$fg-on-dark-dim:  #9ab0c1;   // 4.8:1 on navy
+$border-on-dark:  $navy-3;
+
+// Class-category colors for the schedule. Each is picked to clear 3:1
+// against $cream-3, the card these sit on — the Material-palette brights
+// they replaced were chosen for a black ground and wash out on cream.
+$cat-bjj:        $navy;
+$cat-kickboxing: #1d6fa5;
+$cat-boxing:     #b45309;
+$cat-mma:        #6d4c9f;
+$cat-fitness:    #2f7d32;
+$cat-youth:      $mats;
+$cat-open-mat:   #6e8497;
 
 // ---- Typography ---------------------------------------------------------
 $font-display: "Anton", "Bebas Neue", "Oswald", "Impact", system-ui, sans-serif;
@@ -91,10 +121,12 @@ $bp-2xl: 1536px;
 @mixin xl { @media (min-width: $bp-xl) { @content; } }
 
 // ---- Effects ------------------------------------------------------------
-$shadow-sm:  0 1px 2px rgba(0,0,0,0.40);
-$shadow:     0 8px 24px rgba(0,0,0,0.45);
-$shadow-lg:  0 24px 64px rgba(0,0,0,0.55);
-$glow-red:   0 0 32px rgba(210,32,32,0.35);
+// Shadows are navy-tinted and much lighter than the old black-on-black set —
+// a shadow authored for an ink-black page reads as a dirty smudge on cream.
+$shadow-sm:   0 1px 2px rgba(31,61,88,0.08);
+$shadow:      0 8px 24px rgba(31,61,88,0.10);
+$shadow-lg:   0 24px 64px rgba(31,61,88,0.16);
+$glow-accent: 0 6px 20px rgba(252,181,27,0.45);
 
 $ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
 $ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
