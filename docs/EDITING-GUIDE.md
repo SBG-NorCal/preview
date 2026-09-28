@@ -152,12 +152,7 @@ role: Foundations Jiu-Jitsu Coach
 program: Brazilian Jiu-Jitsu
 photo: /assets/images/coaches/jane-doe.jpg
 belt: BJJ Purple Belt
-secondary_belt: ""              # optional, leave empty if none
-years_training: 5
 joined: 2025
-specialties:
-  - Foundations Jiu-Jitsu
-  - Beginner onboarding
 short_bio: >-
   One-or-two-sentence bio that shows on the coach card across the site.
 ---
